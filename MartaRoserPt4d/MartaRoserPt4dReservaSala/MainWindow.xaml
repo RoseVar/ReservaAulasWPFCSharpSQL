@@ -1,0 +1,29 @@
+﻿<Window x:Class="MartaRoserPt4dReservaSala.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MartaRoserPt4dReservaSala"
+mc:Ignorable="d"
+        Title="Login" Height="202.131" Width="546.422" ResizeMode="NoResize" Foreground="#FFF5EAEA" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF1A21BB" Offset="0"/>
+            <GradientStop Color="#FF7ECEEC" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <StackPanel Margin="0,12,-3,-25" Height="161" VerticalAlignment="Top">
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Username" Height="39" Width="76" FontFamily="Verdana" Foreground="#FFF5EDED" />
+            <TextBox x:Name="usuari" Width="127" Height="21"/>
+
+        </StackPanel >
+        <StackPanel Orientation="Horizontal" Height="29" Margin="0,0,54,0">
+            <Label Content="Password" Width="76" Margin="0,6,0,-14" Foreground="#FFF0EBEB" FontFamily="Verdana" />
+            <PasswordBox x:Name="contrasenya" Width="127" Height="21" VerticalAlignment="Top" Margin="0,8,0,-3" />
+        </StackPanel >
+        <Button Content="Validate" Click="validate" Height="40" Margin="393,0,35,0" FontFamily="Verdana" IsDefault="True"/>
+        <Label x:Name="lb3" FontFamily="Verdana" Background="#00000000" Foreground="#FFFFFFFF" FontWeight="Bold" />
+    </StackPanel>
+</Window>
+

@@ -1,0 +1,92 @@
+﻿<Window x:Class="MartaRoserPt4dReservaSala.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MartaRoserPt4dReservaSala"
+        mc:Ignorable="d"
+        Title="Menu administrador" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TabControl >
+            <TabItem x:Name="tabItem1" Header="Alta Usuario" FontSize="16">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Datos del usuario a dar de alta:" HorizontalAlignment="Left" Margin="136,52,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="31" Width="258" Grid.ColumnSpan="2"/>
+                    <Label x:Name="lbPassword" Content="Password" HorizontalAlignment="Left" Margin="176,159,0,0" VerticalAlignment="Top" Height="34" Width="183" FontSize="16" Grid.ColumnSpan="2"/>
+                    <Label x:Name="lbRol" Content="Rol" HorizontalAlignment="Left" Margin="176,212,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.055,0.197" FontSize="16" Height="31" Width="32" Grid.ColumnSpan="2"/>
+                    <Label x:Name="lbEmail" Content="Email" HorizontalAlignment="Left" Margin="176,263,0,0" VerticalAlignment="Top" FontSize="16" Height="31" Width="48" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="tbUsername" HorizontalAlignment="Left" Height="24" Margin="176,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="16" TextChanged="ocultarLabel" Grid.Column="1" Grid.ColumnSpan="3"/>
+                    <TextBox x:Name="tbRol" HorizontalAlignment="Left" Height="24" Margin="176,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="16" Grid.ColumnSpan="3" Grid.Column="1" IsReadOnlyCaretVisible="True" Text="Teacher" IsEnabled="False"/>
+                    <TextBox x:Name="tbEmail" HorizontalAlignment="Left" Height="24" Margin="176,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="16" Grid.ColumnSpan="3" Grid.Column="1" TextChanged="ocultarLabelResultado"/>
+                    <Button x:Name="btCrearUsuario" Content="Crear usuario" HorizontalAlignment="Left" Margin="55,325,0,0" VerticalAlignment="Top" Width="117" Height="39" Grid.Column="3"  RenderTransformOrigin="0.584,0.051" FontWeight="Bold"  Click="darDeAltaUsuario"/>
+                    <PasswordBox x:Name="pbPassword" HorizontalAlignment="Left" Height="24" Margin="176,172,0,0" VerticalAlignment="Top" Width="228" FontSize="16" Grid.ColumnSpan="3" Grid.Column="1" PasswordChanged="ocultarLabelResultado"/>
+                    <Label x:Name="tbvalidacion" Content="" HorizontalAlignment="Left" Margin="163,325,0,0" VerticalAlignment="Top" Width="449" Grid.ColumnSpan="4"/>
+                    <Label x:Name="lbUsername" Content="UserName" HorizontalAlignment="Left" Margin="176,105,0,0" VerticalAlignment="Top" Height="34" Width="183" FontSize="16" Grid.ColumnSpan="2"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tabItem2" Header="Listar todos los usuarios" FontSize="16">
+                <Grid Background="#FFE5E5E5">
+                    <Button x:Name="btListar" Content="Listar" HorizontalAlignment="Left" Margin="21,23,0,0" VerticalAlignment="Top" Width="75" FontSize="16" Click="mostrarUsuarios" FontWeight="Bold"/>
+                    <TextBlock x:Name="Tblock" Margin="0,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="243" ScrollViewer.CanContentScroll="True" Background="White"/>
+                    <Button x:Name="btBorrarList" Content="Limpiar" HorizontalAlignment="Left" Margin="671,23,0,0" VerticalAlignment="Top" Width="75" FontSize="16" Click="borrarListado"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tabItem3" Header="Modificar Password/Email" FontSize="16">
+                <Grid>
+                    <Grid Background="#FFE5E5E5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="lbBuscaUserModif" Content="Usuario a modificar" HorizontalAlignment="Left" Margin="54,37,0,0" VerticalAlignment="Top" Height="34" Width="183" FontSize="16" Grid.Column="0" Grid.ColumnSpan="2"/>
+                        <Button x:Name="btGuardar" Content="Guardar datos" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="116" Height="39" Click="guardarUsuarioModificado" FontWeight="Bold" Grid.Column="4" Margin="40,0,40,23"/>
+                        <TextBox x:Name="tbBuscaUserModif" HorizontalAlignment="Left" Height="24" Margin="40,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="196" FontSize="16" TextChanged="ocultarLabel" Grid.Column="1" Grid.ColumnSpan="2"/>
+                        <Button x:Name="btBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="111,36,0,0" VerticalAlignment="Top" Width="85" Height="39" Click="buscarParaModificar" Grid.Column="2" Grid.ColumnSpan="2"/>
+                        <Label x:Name="lbShowUser" Content="UserName" HorizontalAlignment="Left" Margin="0,159,0,0" VerticalAlignment="Top" Height="34" Width="183" FontSize="16" Grid.Column="1"/>
+                        <Label x:Name="lbShowPassword" Content="Password" HorizontalAlignment="Left" Margin="0,198,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.166,0.604" Grid.Column="1"/>
+                        <Label x:Name="lbShowEmail" Content="Email" HorizontalAlignment="Left" Margin="0,276,0,0" VerticalAlignment="Top" FontSize="16" Grid.Column="1"/>
+                        <TextBox x:Name="tbShowUser" HorizontalAlignment="Left" Height="24" Margin="0,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="16" Grid.ColumnSpan="3" Grid.Column="2"/>
+                        <TextBox x:Name="tbShowRol" HorizontalAlignment="Left" Height="24" Margin="0,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="16" IsEnabled="False" Grid.ColumnSpan="3" Grid.Column="2"/>
+                        <Label x:Name="lbShowRol" Content="Rol" HorizontalAlignment="Left" Margin="0,237,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.055,0.197" FontSize="16" Grid.Column="1"/>
+                        <TextBox x:Name="tbShowEmail" HorizontalAlignment="Left" Height="24" Margin="0,279,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="16" Grid.ColumnSpan="3" Grid.Column="2"/>
+                        <Label Content="Datos del usuario a modificar:" HorizontalAlignment="Left" Margin="158,117,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="31" Width="236" Grid.ColumnSpan="2"/>
+                        <PasswordBox x:Name="pbShowPassword" HorizontalAlignment="Left" Margin="0,206,0,0" VerticalAlignment="Top" Width="228" Grid.ColumnSpan="3" Grid.Column="2"/>
+                        <Label x:Name="LbResultadoModificar" Content="" HorizontalAlignment="Left" Margin="0,86,0,0" VerticalAlignment="Top" Width="425" Grid.ColumnSpan="4" Grid.Column="1"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tabItem4" Header="Eliminar usuario" FontSize="16">
+                <Grid>
+                    <Grid Background="#FFE5E5E5" Height="386" VerticalAlignment="Top" Margin="1,0,-1,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="lbBuscaUserElim" Content="Usuario a eliminar" HorizontalAlignment="Left" Margin="54,37,0,0" VerticalAlignment="Top" Height="34" Width="183" FontSize="16" Grid.Column="0" Grid.ColumnSpan="2"/>
+                        <Button x:Name="btEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="55,325,0,0" VerticalAlignment="Top" Width="85" Height="39" Grid.Column="3"  RenderTransformOrigin="0.584,0.051" FontWeight="Bold" Click="eliminarUsuario"/>
+                        <TextBox x:Name="tbBuscaUserElim" HorizontalAlignment="Left" Height="24" Margin="40,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="196" FontSize="16" TextChanged="ocultarLabel" Grid.Column="1" Grid.ColumnSpan="2"/>
+                        <Button x:Name="btBuscarElim" Content="Buscar" HorizontalAlignment="Left" Margin="111,36,0,0" VerticalAlignment="Top" Width="85" Height="39" Click="buscarParaEliminar" Grid.Column="2"/>
+                        <Label x:Name="lbShowUserElim" Content="UserName" HorizontalAlignment="Left" Margin="0,159,0,0" VerticalAlignment="Top" Height="34" Width="183" FontSize="16" Grid.Column="1"/>
+                        <Label x:Name="lbShowEmailElim" Content="Email" HorizontalAlignment="Left" Margin="0,263,0,0" VerticalAlignment="Top" FontSize="16" Grid.Column="1" Height="31" Width="48"/>
+                        <TextBox x:Name="tbShowUserElim" HorizontalAlignment="Left" Height="24" Margin="0,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="16" Grid.ColumnSpan="2" Grid.Column="2"/>
+                        <TextBox x:Name="tbShowRolElim" HorizontalAlignment="Left" Height="24" Margin="0,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="16" Grid.ColumnSpan="2" Grid.Column="2"/>
+                        <Label x:Name="lbShowRolElim" Content="Rol" HorizontalAlignment="Left" Margin="0,212,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.055,0.197" FontSize="16" Grid.Column="1" Height="31" Width="32"/>
+                        <TextBox x:Name="tbShowEmailElim" HorizontalAlignment="Left" Height="24" Margin="0,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="16" Grid.ColumnSpan="2" Grid.Column="2"/>
+                        <Label Content="Datos del usuario a eliminar:" HorizontalAlignment="Left" Margin="158,117,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="31" Width="236" Grid.ColumnSpan="2"/>
+                        <Label x:Name="LbResultadoEliminar" Content="" HorizontalAlignment="Left" Margin="10,81,0,0" VerticalAlignment="Top" Width="320" Grid.ColumnSpan="2" Grid.Column="1" Height="31"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button x:Name="btSalir" Content="Salir" HorizontalAlignment="Left" Margin="38,354,0,0" VerticalAlignment="Top" Width="85" Height="39" Click="salirMenuAdmin" FontSize="16"/>
+    </Grid>
+</Window>
